@@ -1,0 +1,138 @@
+#This project utilizes the following superstore data:
+
+    CREATE TABLE superstore (
+        item_id INTEGER PRIMARY KEY,
+        item_name TEXT,
+        category TEXT,
+        price DECIMAL(10, 2),
+        stock_quantity INTEGER,
+        average_rating DECIMAL(3, 2)
+    );
+    
+    INSERT INTO superstore (item_id, item_name, category, price, stock_quantity, average_rating)
+    VALUES
+        (1, 'Stainless Steel Cookware Set', 'Kitchen Supplies', 89.99, 50, 4.6),
+        (2, 'Memory Foam Mattress', 'Furnishings', 499.99, 30, 4.8),
+        (3, 'Smart LED TV', 'Electronics', 549.00, 20, 4.5),
+        (4, 'Robot Vacuum Cleaner', 'Appliances', 199.50, 40, 4.3),
+        (5, 'Wireless Bluetooth Speaker', 'Electronics', 39.99, 60, 4.2),
+        (6, 'Non-Stick Baking Set', 'Kitchen Supplies', 29.95, 80, 4.4),
+        (7, 'Cotton Bedding Set', 'Furnishings', 89.00, 25, 4.7),
+        (8, 'Smart Home Security Camera', 'Electronics', 79.95, 15, 4.1),
+        (9, 'Air Purifier', 'Appliances', 129.50, 35, 4.6),
+        (10, 'Premium Coffee Maker', 'Kitchen Supplies', 79.99, 50, 4.9),
+        (11, 'Ergonomic Office Chair', 'Furnishings', 189.00, 20, 4.5),
+        (12, 'Wireless Earbuds', 'Electronics', 49.99, 75, 4.3),
+        (13, 'Slow Cooker', 'Appliances', 49.95, 30, 4.7),
+        (14, 'Cutlery Set', 'Kitchen Supplies', 34.50, 40, 4.4),
+        (15, 'Cozy Throw Blanket', 'Furnishings', 24.99, 100, 4.2);
+    
+
+#For this project, I used SQL to query the Superstore database to get information about items sold at the store and their prices. 
+
+#Use a SELECT statement to order the items by price.
+    SELECT item_name, price
+    FROM superstore
+    ORDER BY price;
+
+| item_name                    | price  |
+| ---------------------------- | ------ |
+| Cozy Throw Blanket           | 24.99  |
+| Non-Stick Baking Set         | 29.95  |
+| Cutlery Set                  | 34.50  |
+| Wireless Bluetooth Speaker   | 39.99  |
+| Slow Cooker                  | 49.95  |
+| Wireless Earbuds             | 49.99  |
+| Smart Home Security Camera   | 79.95  |
+| Premium Coffee Maker         | 79.99  |
+| Cotton Bedding Set           | 89.00  |
+| Stainless Steel Cookware Set | 89.99  |
+| Air Purifier                 | 129.50 |
+| Ergonomic Office Chair       | 189.00 |
+| Robot Vacuum Cleaner         | 199.50 |
+| Memory Foam Mattress         | 499.99 |
+| Smart LED TV                 | 549.00 |
+
+#Show SUM statistic about the item prices.
+
+    SELECT SUM(price)
+    FROM superstore;
+
+| SUM(price) |
+| ---------- |
+| 2135.29    |
+
+#Show AVG statistic about the item prices.
+
+    SELECT AVG(price)
+    FROM superstore;
+
+| AVG(price) |
+| ---------- |
+| 142.352667 |
+
+#Show MAX statistic about the item prices.
+
+    SELECT MAX(price)
+    FROM superstore;
+
+| MAX(price) |
+| ---------- |
+| 549.00     |
+
+#Show MIN statistic about the item prices.
+    
+    SELECT MIN(price)
+    FROM superstore;
+
+| MIN(price) |
+| ---------- |
+| 24.99      |
+
+#Show COUNT statistic about the item prices.
+ 
+    SELECT COUNT(price)
+    FROM superstore;
+
+| COUNT(price) |
+| ------------ |
+| 15           |
+
+#Show a statistic about the stock quantity for items in the category of "Kitchen Supplies". 
+   
+    SELECT SUM(stock_quantity)
+    FROM superstore
+    WHERE category='Kitchen Supplies';
+
+| SUM(stock_quantity) |
+| ------------------- |
+| 220                 |
+
+---
+#Show the average rating of all items from highest to lowest. 
+
+    SELECT average_rating, item_name
+    FROM superstore
+    ORDER BY average_rating desc;
+
+| average_rating | item_name                    |
+| -------------- | ---------------------------- |
+| 4.90           | Premium Coffee Maker         |
+| 4.80           | Memory Foam Mattress         |
+| 4.70           | Cotton Bedding Set           |
+| 4.70           | Slow Cooker                  |
+| 4.60           | Stainless Steel Cookware Set |
+| 4.60           | Air Purifier                 |
+| 4.50           | Smart LED TV                 |
+| 4.50           | Ergonomic Office Chair       |
+| 4.40           | Non-Stick Baking Set         |
+| 4.40           | Cutlery Set                  |
+| 4.30           | Robot Vacuum Cleaner         |
+| 4.30           | Wireless Earbuds             |
+| 4.20           | Wireless Bluetooth Speaker   |
+| 4.20           | Cozy Throw Blanket           |
+| 4.10           | Smart Home Security Camera   |
+
+---
+
+[View on DB Fiddle](https://www.db-fiddle.com/f/PvBAaQwEUSWAxZCsg4Vmx/0)
